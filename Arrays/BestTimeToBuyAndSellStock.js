@@ -1,4 +1,7 @@
-//Best time to buy and sell stock (121)
+//Best time to buy and sell stock (121) Big notation O(n)
+/*
+
+*/
 const maxProfit=(prices)=>{
     let minPrice= Infinity;
     let maxProfit=0
