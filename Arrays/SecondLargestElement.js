@@ -1,3 +1,4 @@
+//O(n)
 const largestAndSecondLargestElement= (nums)=>{
     let largestElement = Number.MIN_SAFE_INTEGER;
 
