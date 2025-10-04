@@ -22,7 +22,7 @@ const twoSum= (nums, target)=>{
      const map = new Map();
     for(let i=0; i<nums.length; i++){
         const complement= target- nums[i]
-        if(map.get(complement)) return [map.get(complement, i)]
+        if(map.get(complement)) return [map.get(complement)]
         map.set(nums[i], i)
     }
 }
