@@ -36,3 +36,4 @@ const topKFrequentElements = (nums, k) => {
 
   return result;
 };
+console.log(topKFrequentElements([1, 1, 2, 2, 2, 3, 3, 3, 3,4,5],2))
