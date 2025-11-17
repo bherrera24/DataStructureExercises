@@ -38,26 +38,23 @@ Constraints:
 0 <= s.length <= 5 * 104
 s consists of English letters, digits, symbols and spaces.
 */
-const lengthOfLongestSubstring=(s)=> {
-  let start = 0;
-  let maxLength = 0;
-  const seen = new Set();
-
-  for (let end = 0; end < s.length; end++) {
-    const char = s[end];
-
-    // Si el caracter ya está en la ventana, la reducimos desde el inicio
-    while (seen.has(char)) {
-      seen.delete(s[start]);
-      start++;
+export function findLongestSubstring(str) {
+    const seen= new Map()
+    let start=0
+    let maxLength=0
+    for(let end=0; end<str.length; end++){
+        const char= str[end]
+        if(seen.has(char) && seen.get(char)>=start){
+            start=seen.get(char)+1
+        
+        }
+        
+        seen.set(char, end)
+        maxLength=Math.max(maxLength, end-start+1)
     }
 
-    // Agregamos el caracter actual y actualizamos longitud máxima
-    seen.add(char);
-    maxLength = Math.max(maxLength, end - start + 1);
-  }
-
-  return maxLength;
+   
+    return maxLength;
 }
 /*
 🚀 Complejidad
