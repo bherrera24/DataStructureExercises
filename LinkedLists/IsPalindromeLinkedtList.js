@@ -18,28 +18,28 @@ function esPalindromo(head) {
   if (!head || !head.siguiente) return true; // Lista vacía o de un solo nodo
 
   // Encontrar el punto medio usando dos punteros
-  let lento = head;
-  let rapido = head;
-  while (rapido.siguiente && rapido.siguiente.siguiente) {
-    lento = lento.siguiente;
-    rapido = rapido.siguiente.siguiente;
+  let slow = head;
+  let fast = head;
+  while (fast.siguiente && fast.siguiente.siguiente) {
+    slow = slow.siguiente;
+    fast = fast.siguiente.siguiente;
   }
   // lento está en el nodo medio (para listas impares, en el central)
 
   // Invertir la segunda mitad de la lista
-  let anterior = null;
-  let actual = lento.siguiente;
-  while (actual) {
-    let temp = actual.siguiente;
-    actual.siguiente = anterior;
-    anterior = actual;
-    actual = temp;
+  let prev = null;
+  let current = slow.siguiente;
+  while (current) {
+    let temp = current.siguiente;
+    current.siguiente = prev;
+    prev = current;
+    current = temp;
   }
   // anterior es la cabeza de la segunda mitad invertida
 
   // Comparar ambas mitades nodo por nodo
   let puntero1 = head;
-  let puntero2 = anterior;
+  let puntero2 = prev;
   let resultado = true;
   while (puntero2) {
     if (puntero1.valor !== puntero2.valor) {
@@ -51,16 +51,16 @@ function esPalindromo(head) {
   }
 
   // Restaurar la segunda mitad a su forma original
-  actual = anterior;
-  anterior = null;
-  while (actual) {
-    let temp = actual.siguiente;
-    actual.siguiente = anterior;
-    anterior = actual;
-    actual = temp;
+  current = prev;
+  prev = null;
+  while (current) {
+    let temp = current.siguiente;
+    current.siguiente = prev;
+    prev = current;
+    current = temp;
   }
   // Reconectar la lista restaurada
-  lento.siguiente = anterior;
+  slow.siguiente = prev;
 
   return resultado;
 }
