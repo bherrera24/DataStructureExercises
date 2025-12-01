@@ -71,6 +71,7 @@ const isValid = (s)=> {
         }else{
             return false //pila vacia o top no es parentesis que correponde para cerrar
         }
+    //sino, es otr parentesis que abre    
     }else{
         stack.push(ch)
     }
@@ -78,4 +79,4 @@ const isValid = (s)=> {
  }
  return stack.length===0
 };
-console.log(isValid("()"))
+console.log(isValid("(())"))
